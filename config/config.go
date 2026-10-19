@@ -135,8 +135,8 @@ func NewRootConfig(
 	var err error
 
 	conf := &Config{}
-	// Set all parameters to their respective zero-values. Need to use
-	// reflection for this sadly.
+	// Use reflection to initialize nil pointer fields with pointers to
+	// zero values of their element types.
 	v := reflect.ValueOf(conf).Elem()
 	for i := 0; i < v.NumField(); i++ {
 		field := v.Field(i)
